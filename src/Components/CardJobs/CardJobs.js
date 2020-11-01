@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import { MdLocationOn } from "react-icons/md";
+import ModalJob from "../ModalJob/ModalJob";
 import "./CardJobs.scss";
 
 function CardJobs({ job }) {
+  const [modalShow, setModalShow] = useState(false);
+
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + " ..." : str;
   }
@@ -31,8 +34,16 @@ function CardJobs({ job }) {
                 .replace("<p>", "")
                 .replace("</p>", "")}
             </p>
-            <button>read more</button>
+            <button onClick={() => setModalShow(true)}>read more</button>
           </div>
+          <ModalJob
+            company={job.company}
+            title={job.title}
+            location={job.location}
+            desc={job.description}
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+          />
         </Card.Body>
       </Card>
     </div>
