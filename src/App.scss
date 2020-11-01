@@ -1,0 +1,25 @@
+.app {
+  background: #16222a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #3a6073,
+    #16222a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #3a6073,
+    #16222a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: grid;
+  place-items: center;
+}
+
+:root {
+  --clr-primary-1: #9969d3;
+  --clr-primary-2: #5a5f69;
+  --clr-primary-3: #2e3137;
+  --clr-primary-4: #f3f3f3;
+  --clr-primary-5: #e7e7e8;
+  --clr-primary-6: #fff;
+  --clr-primary-7: #9ea1a5;
+}
