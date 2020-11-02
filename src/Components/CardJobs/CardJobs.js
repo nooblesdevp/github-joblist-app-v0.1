@@ -6,6 +6,7 @@ import "./CardJobs.scss";
 
 function CardJobs({ job }) {
   const [modalShow, setModalShow] = useState(false);
+  const regex = /(<([^>]+)>)/gi;
 
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + " ..." : str;
@@ -29,18 +30,14 @@ function CardJobs({ job }) {
               <MdLocationOn className="cardJob__locationIcon" />
               <span>{job.location}</span>
             </div>
-            <p>
-              {truncate(job.description, 120)
-                .replace("<p>", "")
-                .replace("</p>", "")}
-            </p>
-            <button onClick={() => setModalShow(true)}>read more</button>
+            <p>{truncate(job.description, 120).replace(regex, "")}</p>
+            <button onClick={() => setModalShow(!modalShow)}>read more</button>
           </div>
           <ModalJob
             company={job.company}
             title={job.title}
             location={job.location}
-            desc={job.description}
+            desc={job.description.replace(regex, "")}
             show={modalShow}
             onHide={() => setModalShow(false)}
           />
