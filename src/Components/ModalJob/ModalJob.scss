@@ -1,5 +1,21 @@
-.modalJob {
-  .modalJob__desc {
-    font-size: 14px;
-  }
+.modalJob__descTitle {
+  color: var(--clr-primary-2);
+}
+.modalJob__desc {
+  font-size: 14px;
+}
+h4 {
+  font-size: 15px;
+  margin-bottom: 16px;
+}
+.modalJob__header {
+  font-size: 18px;
+}
+button {
+  border-radius: 4px;
+  border: none;
+  color: var(--clr-primary-4);
+  font-size: 13px;
+  background: var(--clr-primary-1);
+  padding: 8px 25px;
 }
