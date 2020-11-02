@@ -1,10 +1,27 @@
-import React, { useState, Component } from "react";
+import React from "react";
 
 import { Modal } from "react-bootstrap";
+import { MdFavoriteBorder } from "react-icons/md";
+import { useHistory } from "react-router-dom";
+import { useStateValue } from "../../context/Provider";
 import MapLocation from "../Map/Map";
+
 import "./ModalJob.scss";
 
 function Modaljob({ company, title, location, desc, ...props }) {
+  const [{user}, dispatch ] = useStateValue()
+  const history = useHistory
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + " ..." : str;
+  }
+  const handleLove = ()=> {
+    if{!user ? (
+      history.push('/login')
+    ) : (
+      history.push('/fav')
+    )}
+  }
+
   return (
     <div className="modalJob">
       <Modal
@@ -28,9 +45,12 @@ function Modaljob({ company, title, location, desc, ...props }) {
             {" "}
             <strong>Description</strong>{" "}
           </p>
-          <p className="modalJob__desc ">{desc}</p>
+          <p className="modalJob__desc ">{truncate(desc, 700)}</p>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer className="d-flex justify-content-between">
+          <button onClick={props.onHide}>
+            <MdFavoriteBorder />
+          </button>
           <button onClick={props.onHide}>Close</button>
         </Modal.Footer>
       </Modal>
