@@ -34,6 +34,7 @@ function CardJobs({ job }) {
             <button onClick={() => setModalShow(!modalShow)}>read more</button>
           </div>
           <ModalJob
+            img={job.company_logo}
             company={job.company}
             title={job.title}
             location={job.location}

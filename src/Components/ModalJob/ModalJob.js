@@ -4,12 +4,13 @@ import { Modal } from "react-bootstrap";
 import { MdFavoriteBorder } from "react-icons/md";
 import { Link, useHistory } from "react-router-dom";
 import { useStateValue } from "../../context/Provider";
+import { ACTIONS } from "../../context/reducer";
 import MapLocation from "../Map/Map";
 
 import "./ModalJob.scss";
 
-function Modaljob({ company, title, location, desc, ...props }) {
-  const [{ user }, dispatch] = useStateValue();
+function Modaljob({ img, company, title, location, desc, ...props }) {
+  const [{ user, job }, dispatch] = useStateValue();
 
   const history = useHistory;
 
@@ -20,7 +21,16 @@ function Modaljob({ company, title, location, desc, ...props }) {
   const handleLike = () => {
     if (user !== null) {
       console.log("thanksyoo");
-      dispatch({});
+      dispatch({
+        type: ACTIONS.SAVE_JOB,
+        job: {
+          img,
+          company,
+          title,
+          location,
+          desc,
+        },
+      });
     } else {
       console.log("loginbruh");
     }
@@ -55,10 +65,15 @@ function Modaljob({ company, title, location, desc, ...props }) {
           <button onClick={handleLike}>
             <MdFavoriteBorder />
           </button>
-
-          <button>
-            <Link to="/login">{!user ? "Login" : "Logout"}</Link>
-          </button>
+          {!user ? (
+            <button>
+              <Link to="/login">login</Link>
+            </button>
+          ) : (
+            <button>
+              <Link to="/favorite"> My App</Link>
+            </button>
+          )}
         </Modal.Footer>
       </Modal>
     </div>

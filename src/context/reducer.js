@@ -6,6 +6,7 @@ export const initialState = {
 export const ACTIONS = {
   SET_USER: "set-user",
   GET_DATA: "get-data",
+  SAVE_JOB: "save-job",
 };
 
 const reducer = (state, action) => {
@@ -20,6 +21,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         jobs: action.payload.jobs,
+      };
+    case ACTIONS.SAVE_JOB:
+      return {
+        ...state,
+        job: action.payload.job,
       };
     default:
       return state;
