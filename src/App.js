@@ -13,9 +13,6 @@ function App() {
     <div className="app ">
       <Router>
         <Switch>
-          <Route path="/" exact>
-            <Dashboard />
-          </Route>
           <Route path="/login">
             <Login />
           </Route>
@@ -30,6 +27,9 @@ function App() {
           <Route path="/favorite">
             <HeaderFav />
             <Fav />
+          </Route>
+          <Route path="/" exact>
+            <Dashboard />
           </Route>
         </Switch>
       </Router>

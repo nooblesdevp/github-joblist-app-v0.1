@@ -17,4 +17,8 @@ button {
   font-size: 13px;
   background: var(--clr-primary-1);
   padding: 8px 25px;
+  flex: 1;
+  a {
+    color: var(--clr-primary-4);
+  }
 }

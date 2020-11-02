@@ -17,6 +17,15 @@ function Modaljob({ company, title, location, desc, ...props }) {
     return str?.length > n ? str.substr(0, n - 1) + " ..." : str;
   }
 
+  const handleLike = () => {
+    if (user !== null) {
+      console.log("thanksyoo");
+      dispatch({});
+    } else {
+      console.log("loginbruh");
+    }
+  };
+
   return (
     <div className="modalJob">
       <Modal
@@ -42,13 +51,14 @@ function Modaljob({ company, title, location, desc, ...props }) {
           </p>
           <p className="modalJob__desc ">{truncate(desc, 700)}</p>
         </Modal.Body>
-        <Modal.Footer className="d-flex justify-content-between">
-          <Link to="/login">
-            <button onClick={props.onHide}>
-              <MdFavoriteBorder />
-            </button>
-          </Link>
-          <button onClick={props.onHide}>Close</button>
+        <Modal.Footer className=" modalJob__footer d-flex justify-content-between">
+          <button onClick={handleLike}>
+            <MdFavoriteBorder />
+          </button>
+
+          <button>
+            <Link to="/login">{!user ? "Login" : "Logout"}</Link>
+          </button>
         </Modal.Footer>
       </Modal>
     </div>

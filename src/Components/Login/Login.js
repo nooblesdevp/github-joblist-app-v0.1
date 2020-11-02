@@ -18,7 +18,7 @@ function Login() {
           payload: { user: res.user },
         });
 
-        history.push("./myapp");
+        history.push("./");
       })
       .catch((err) => alert(err.message));
   };
