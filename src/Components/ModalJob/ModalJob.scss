@@ -10,15 +10,17 @@ h4 {
 .modalJob__header {
   font-size: 18px;
 }
-button {
-  border-radius: 4px;
-  border: none;
-  color: var(--clr-primary-4);
-  font-size: 13px;
-  background: var(--clr-primary-1);
-  padding: 8px 25px;
-  flex: 1;
-  a {
+.modalJob__footer {
+  .modalJob__footerBtn {
+    border-radius: 4px;
+    border: none;
     color: var(--clr-primary-4);
+    font-size: 13px;
+    background: var(--clr-primary-1);
+    padding: 8px 25px;
+    flex: 1;
+    a {
+      color: var(--clr-primary-4);
+    }
   }
 }

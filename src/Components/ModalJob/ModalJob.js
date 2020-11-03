@@ -10,20 +10,21 @@ import MapLocation from "../Map/Map";
 import "./ModalJob.scss";
 
 function Modaljob({ img, company, title, location, desc, ...props }) {
-  const [{ user, job }, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   const history = useHistory;
 
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + " ..." : str;
   }
+  const regex = /(<([^>]+)>)/gi;
 
   const handleLike = () => {
     if (user !== null) {
       console.log("thanksyoo");
       dispatch({
         type: ACTIONS.SAVE_JOB,
-        job: {
+        saveJob: {
           img,
           company,
           title,
@@ -32,7 +33,7 @@ function Modaljob({ img, company, title, location, desc, ...props }) {
         },
       });
     } else {
-      console.log("loginbruh");
+      alert("Login needed for this access !");
     }
   };
 
@@ -62,15 +63,15 @@ function Modaljob({ img, company, title, location, desc, ...props }) {
           <p className="modalJob__desc ">{truncate(desc, 700)}</p>
         </Modal.Body>
         <Modal.Footer className=" modalJob__footer d-flex justify-content-between">
-          <button onClick={handleLike}>
+          <button className="modalJob__footerBtn" onClick={handleLike}>
             <MdFavoriteBorder />
           </button>
           {!user ? (
-            <button>
+            <button className="modalJob__footerBtn">
               <Link to="/login">login</Link>
             </button>
           ) : (
-            <button>
+            <button className="modalJob__footerBtn">
               <Link to="/favorite"> My App</Link>
             </button>
           )}
