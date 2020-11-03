@@ -7,8 +7,11 @@ import Login from "./Components/Login/Login";
 import HeaderFav from "./Components/Favorite/HeaderFav";
 import Fav from "./Components/Favorite/Fav";
 import Progress from "./Components/Favorite/Progress";
+import { useStateValue } from "./context/Provider";
 
 function App() {
+  const [{ user }, dispatch] = useStateValue();
+
   return (
     <div className="app ">
       <Router>
@@ -17,16 +20,24 @@ function App() {
             <Login />
           </Route>
           <Route path="/myapp">
-            <HeaderFav />
-            {/* <Fav /> */}
+            {!user ? (
+              <Login />
+            ) : (
+              <>
+                <HeaderFav />
+                <Fav />
+              </>
+            )}
           </Route>
           <Route path="/progress">
-            <HeaderFav />
-            <Progress />
-          </Route>
-          <Route path="/favorite">
-            <HeaderFav />
-            <Fav />
+            {!user ? (
+              <Login />
+            ) : (
+              <>
+                <HeaderFav />
+                <Progress />
+              </>
+            )}
           </Route>
           <Route path="/" exact>
             <Dashboard />

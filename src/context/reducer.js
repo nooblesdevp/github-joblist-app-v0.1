@@ -27,7 +27,7 @@ const reducer = (state, action) => {
         ...state,
         // jobs: action.payload.saveJob,
         // jobs: [...state.jobs, action.payload.saveJob],
-        jobs: [...state.jobs, action.saveJob],
+        jobs: action.saveJob,
       };
     default:
       return state;

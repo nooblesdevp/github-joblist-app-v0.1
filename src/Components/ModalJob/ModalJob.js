@@ -9,7 +9,7 @@ import MapLocation from "../Map/Map";
 
 import "./ModalJob.scss";
 
-function Modaljob({ img, company, title, location, desc, ...props }) {
+function Modaljob({ img, company, title, location, desc, date, ...props }) {
   const [{ user }, dispatch] = useStateValue();
 
   const history = useHistory;
@@ -30,6 +30,7 @@ function Modaljob({ img, company, title, location, desc, ...props }) {
           title,
           location,
           desc,
+          date,
         },
       });
     } else {
@@ -72,7 +73,7 @@ function Modaljob({ img, company, title, location, desc, ...props }) {
             </button>
           ) : (
             <button className="modalJob__footerBtn">
-              <Link to="/favorite"> My App</Link>
+              <Link to="/myapp"> My App</Link>
             </button>
           )}
         </Modal.Footer>

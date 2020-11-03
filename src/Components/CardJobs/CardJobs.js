@@ -39,7 +39,8 @@ function CardJobs({ job }) {
             company={job.company}
             title={job.title}
             location={job.location}
-            desc={job.description.replace(regex, "")}
+            desc={job.description}
+            date={job.created_at}
             show={modalShow}
             onHide={() => setModalShow(false)}
           />
